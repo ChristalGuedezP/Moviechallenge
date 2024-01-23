@@ -1,7 +1,6 @@
-// home.component.ts
+//home.component.ts
 import { Component, OnInit } from '@angular/core';
 import { MovieService } from '../../services/movies.service';
-
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -11,8 +10,8 @@ export class HomeComponent implements OnInit {
   movies: any[] = [];
   genres: any[] = [];
   selectedGenre: string = '';
-  currentPage = 1;
-  totalPages = 10; // Esto es solo un ejemplo, debes ajustarlo a tus necesidades
+  currentPage: number = 1;
+  totalPages: number = 0;
 
   constructor(private movieService: MovieService) {}
 
@@ -33,8 +32,6 @@ export class HomeComponent implements OnInit {
   }
 
   loadMovies() {
-    const genreParam = this.selectedGenre ? `&with_genres=${this.selectedGenre}` : '';
-
     this.movieService.getMovies({ withGenres: this.selectedGenre, page: this.currentPage }).subscribe(
       (data) => {
         this.movies = data.results;
@@ -46,7 +43,7 @@ export class HomeComponent implements OnInit {
     );
   }
 
-  filterByGenre() {
+  filterByGenre(): any[] {
     if (!this.selectedGenre) {
       return this.movies;
     }
@@ -54,7 +51,8 @@ export class HomeComponent implements OnInit {
     return this.movies.filter(movie => movie.genre_ids.includes(Number(this.selectedGenre)));
   }
 
-  onPageChange(newPage: number) {
-    this.currentPage = newPage;
-  }
+  onPageChange(page: number): void {
+  this.currentPage = page;
+  this.loadMovies();
+}
 }

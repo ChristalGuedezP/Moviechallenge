@@ -1,6 +1,10 @@
 <!-- pagination.component.html -->
-<div>
-  <button (click)="prevPage()">Previous</button>
-  <span>{{ currentPage }} / {{ totalPages }}</span>
-  <button (click)="nextPage()">Next</button>
+<div class="pagination-container">
+  <button [disabled]="currentPage === 1" (click)="onPreviousPage()">Anterior</button>
+  
+  <div class="page-numbers">
+    <button *ngFor="let page of getPagesArray()" [class.active]="page === currentPage" (click)="onPageChange.emit(page)">{{ page }}</button>
+  </div>
+  
+  <button [disabled]="currentPage === totalPages" (click)="onNextPage()">Siguiente</button>
 </div>

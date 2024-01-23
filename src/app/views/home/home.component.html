@@ -3,7 +3,7 @@
   <h1>Movie Challenge</h1>
   
   <label>Filtrar por género:</label>
-  <select [(ngModel)]="selectedGenre" (change)="loadMovies()">
+  <select [(ngModel)]="selectedGenre" (change)="onPageChange(1)">
     <option value="">Todos</option>
     <option *ngFor="let genre of genres" [value]="genre.id">{{ genre.name }}</option>
   </select>
@@ -17,11 +17,5 @@
       </div>
     </div>
   </div>
-
-  <!-- Utiliza el componente de paginación -->
-  <app-pagination
-    [currentPage]="currentPage"
-    [totalPages]="totalPages"
-    (pageChange)="onPageChange($event)"
-  ></app-pagination>
+  <app-pagination [currentPage]="currentPage" [totalPages]="totalPages" (onPageChange)="onPageChange($event)"></app-pagination>
 </div>
