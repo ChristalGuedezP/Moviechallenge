@@ -1,6 +1,6 @@
+//home.component.ts
 import { Component, OnInit } from '@angular/core';
 import { MovieService } from '../../services/movies.service';
-
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -10,6 +10,8 @@ export class HomeComponent implements OnInit {
   movies: any[] = [];
   genres: any[] = [];
   selectedGenre: string = '';
+  currentPage: number = 1;
+  totalPages: number = 0;
 
   constructor(private movieService: MovieService) {}
 
@@ -30,9 +32,10 @@ export class HomeComponent implements OnInit {
   }
 
   loadMovies() {
-    this.movieService.getMovies().subscribe(
+    this.movieService.getMovies({ withGenres: this.selectedGenre, page: this.currentPage }).subscribe(
       (data) => {
         this.movies = data.results;
+        this.totalPages = data.total_pages;
       },
       (error) => {
         console.error('Error fetching movies:', error);
@@ -40,13 +43,16 @@ export class HomeComponent implements OnInit {
     );
   }
 
-  // Filtrar películas por género
-  filterByGenre() {
+  filterByGenre(): any[] {
     if (!this.selectedGenre) {
-      return this.movies; // No hay género seleccionado, retorna todas las películas.
+      return this.movies;
     }
 
-    // Filtra las películas por el género seleccionado.
     return this.movies.filter(movie => movie.genre_ids.includes(Number(this.selectedGenre)));
   }
+
+  onPageChange(page: number): void {
+  this.currentPage = page;
+  this.loadMovies();
+}
 }

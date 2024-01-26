@@ -1,0 +1,33 @@
+/* pagination.component.css */
+.pagination-container {
+  display: flex;
+  justify-content: center;
+  align-items: center; 
+}
+
+.page-numbers button {
+  margin: 0 5px; 
+  background-color: #ffffff; 
+  color: #000000; 
+  border-width: 2px;
+  border-style: solid;
+  border-color: black;
+  padding: 8px 12px;
+  cursor: pointer; 
+  border-radius: 5px;
+}
+
+.page-numbers button.active {
+  background-color: #cdcdcd; 
+}
+button {
+  margin: 0 5px; 
+  background-color: #ffffff; 
+  color: #000000; 
+  border-width: 2px;
+  border-style: solid;
+  border-color: black;
+  padding: 8px 12px;
+  cursor: pointer; 
+  border-radius: 5px;
+}
