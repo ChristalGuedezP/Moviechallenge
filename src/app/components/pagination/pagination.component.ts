@@ -28,4 +28,11 @@ export class PaginationComponent {
   getPagesArray(): number[] {
     return Array.from({ length: this.totalPages }, (_, i) => i + 1);
   }
+  shouldDisplayPage(page: number): boolean {
+    const maxVisiblePages = 10;
+    const leftBoundary = Math.max(1, this.currentPage - Math.floor(maxVisiblePages / 2));
+    const rightBoundary = Math.min(this.totalPages, leftBoundary + maxVisiblePages - 1);
+    return page >= leftBoundary && page <= rightBoundary;
+  }
+  
 }

@@ -5,7 +5,6 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ComponentsModule } from './components/components.module';
 import { ViewsModule } from './views/views.module';
 
 @NgModule({
@@ -17,7 +16,6 @@ import { ViewsModule } from './views/views.module';
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    ComponentsModule,
     ViewsModule
   ],
   providers: [],

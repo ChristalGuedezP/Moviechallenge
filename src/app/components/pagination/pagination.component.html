@@ -3,7 +3,9 @@
   <button [disabled]="currentPage === 1" (click)="onPreviousPage()">Anterior</button>
   
   <div class="page-numbers">
-    <button *ngFor="let page of getPagesArray()" [class.active]="page === currentPage" (click)="onPageChange.emit(page)">{{ page }}</button>
+    <ng-container *ngFor="let page of getPagesArray()">
+      <button *ngIf="shouldDisplayPage(page)" [class.active]="page === currentPage" (click)="onPageChange.emit(page)">{{ page }}</button>
+    </ng-container>
   </div>
   
   <button [disabled]="currentPage === totalPages" (click)="onNextPage()">Siguiente</button>
