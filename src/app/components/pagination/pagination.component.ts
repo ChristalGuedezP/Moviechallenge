@@ -32,7 +32,8 @@ export class PaginationComponent {
   }
 
   getPagesArray(): number[] {
-    return Array.from({ length: this.totalPages }, (_, i) => i + 1);
+    // return Array.from({ length: this.totalPages }, (_, i) => i + 1);
+    return Array.from({ length: 20 }, (_, i) => i + 1);
   }
 
   shouldDisplayPage(page: number): boolean {

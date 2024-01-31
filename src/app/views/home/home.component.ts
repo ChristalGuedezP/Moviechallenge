@@ -49,14 +49,6 @@ export class HomeComponent implements OnInit {
     );
   }
 
-  filterByGenre(): any[] {
-    if (!this.selectedGenre) {
-      return this.movies;
-    }
-
-    return this.movies.filter(movie => movie.genre_ids.includes(Number(this.selectedGenre)));
-  }
-
   onSortChanged(order: string) {
     this.loadMovies({ sortOrder: order });
   }
