@@ -1,0 +1,39 @@
+.movies-container {
+  margin-top: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  clear: both; 
+}
+
+.movie-card {
+  background-color: aliceblue;
+  width: 200px;
+  margin: 12px;
+  border: 5px solid #000000;
+  border-radius: 15px;
+  overflow: hidden;
+  margin-bottom: -50px; 
+}
+
+.movie-card:hover {
+  transform: scale(1.1);
+}
+
+.movie-card:nth-child(5n + 1),
+.movie-card:nth-child(5n + 2),
+.movie-card:nth-child(5n + 3),
+.movie-card:nth-child(5n + 4),
+.movie-card:nth-child(5n + 5) {
+  margin-top: 80px; 
+}
+
+.movie-card img {
+  width: 100%;
+  height: auto;
+}
+
+.movie-details {
+  padding: 10px;
+  text-align: center;
+}
