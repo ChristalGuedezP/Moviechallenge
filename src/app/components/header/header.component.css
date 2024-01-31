@@ -1,0 +1,17 @@
+.movie-challenge-container {
+    background-color: #010429;
+    padding: 20px;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+  }
+  
+h1 {
+    font-family: 'Black Ops One', sans-serif;
+    color: #ffffff;
+    padding-bottom: 5px;
+    text-align: center;
+    margin: 0;
+  }
+  

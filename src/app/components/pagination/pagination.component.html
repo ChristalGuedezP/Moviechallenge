@@ -1,10 +1,10 @@
-<!-- pagination.component.html -->
+
 <div class="pagination-container">
   <button [disabled]="currentPage === 1" (click)="onPreviousPage()">Anterior</button>
   
   <div class="page-numbers">
     <ng-container *ngFor="let page of getPagesArray()">
-      <button *ngIf="shouldDisplayPage(page)" [class.active]="page === currentPage" (click)="onPageChange.emit(page)">{{ page }}</button>
+      <button *ngIf="shouldDisplayPage(page)" [class.active]="page === currentPage" (click)="onPageClick(page)">{{ page }}</button>
     </ng-container>
   </div>
   

@@ -1,4 +1,4 @@
-//pagination.component.ts
+
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
@@ -11,7 +11,7 @@ export class PaginationComponent {
   @Input() totalPages: number = 0;
   @Output() onPageChange: EventEmitter<number> = new EventEmitter<number>();
 
-  constructor() { }
+  constructor() {}
 
   onPreviousPage(): void {
     if (this.currentPage > 1) {
@@ -25,14 +25,20 @@ export class PaginationComponent {
     }
   }
 
+  onPageClick(page: number): void {
+    if (page >= 1 && page <= this.totalPages && page !== this.currentPage) {
+      this.onPageChange.emit(page);
+    }
+  }
+
   getPagesArray(): number[] {
     return Array.from({ length: this.totalPages }, (_, i) => i + 1);
   }
+
   shouldDisplayPage(page: number): boolean {
     const maxVisiblePages = 10;
     const leftBoundary = Math.max(1, this.currentPage - Math.floor(maxVisiblePages / 2));
     const rightBoundary = Math.min(this.totalPages, leftBoundary + maxVisiblePages - 1);
     return page >= leftBoundary && page <= rightBoundary;
   }
-  
 }

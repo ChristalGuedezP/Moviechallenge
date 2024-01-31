@@ -11,12 +11,10 @@ export class MovieService {
 
   constructor(private http: HttpClient) {}
 
-  getMovies(params: { withGenres?: string, page?: number } = {}): Observable<any> {
+  getMovies(params: { withGenres?: string | null, page?: number, sortOrder?: string } = {}): Observable<any> {
     const discoverEndpoint = 'discover/movie';
+    const url = `${this.apiUrl}/${discoverEndpoint}?api_key=${this.apiKey}&language=en-US&page=${params.page || 1}&sort_by=${params.sortOrder || 'popularity.desc'}&include_adult=false&include_video=false&with_release_type=2|3${params.withGenres ? `&with_genres=${params.withGenres}` : ''}`;
   
-    // Modifica la URL para incluir los parámetros de género y paginación
-    const url = `${this.apiUrl}/${discoverEndpoint}?api_key=${this.apiKey}&language=en-US&page=${params.page || 1}&sort_by=popularity.desc&include_adult=false&include_video=false&with_release_type=2|3${params.withGenres ? `&with_genres=${params.withGenres}` : ''}`;
-    
     console.log('URL de la solicitud:', url);
   
     return this.http.get(url);

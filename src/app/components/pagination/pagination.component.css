@@ -1,8 +1,8 @@
-/* pagination.component.css */
 .pagination-container {
   display: flex;
   justify-content: center;
   align-items: center; 
+  margin-top: 5%;
 }
 
 .page-numbers button {
@@ -18,7 +18,7 @@
 }
 
 .page-numbers button.active {
-  background-color: #cdcdcd; 
+  background-color: #525157; 
 }
 button {
   margin: 0 5px; 
